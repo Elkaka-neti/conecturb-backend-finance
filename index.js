@@ -1,10 +1,24 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
+const registerRoutes = require('./utils/registerRoutes');
 
 const app = express();
 
-app.get("/", (req,res) => {
-res.send("hello")
-})
 
-app.listen(3000);
+
+
+app.get("/", (req, res) => {
+	res.send("hello");
+});
+
+
+
+// Registrar rotas automaticamente
+const routerDir = path.join(__dirname, 'routers');
+registerRoutes(app, routerDir);
+
+
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
+});
