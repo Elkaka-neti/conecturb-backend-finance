@@ -1,4 +1,4 @@
 // routers/GET/users.js
 module.exports = (req, res) => {
-  res.send('Usuários GET');
+  res.status(200).send('Usuários GET');
 };
