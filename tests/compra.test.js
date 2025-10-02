@@ -18,6 +18,7 @@ describe('Post /compra.', () => {
     expect(res.body).toEqual({ mensagem: 'Compra realizada com sucesso', status: 'ok'})
   });
 
+
   it('Deve falhar ao tentar realizar a compra com dados faltando.', async() => {
     const res = await request(app)
       .post('/compra')
@@ -29,6 +30,23 @@ describe('Post /compra.', () => {
       })
       .set('Accept', 'application/json');
     expect(res.statusCode).toBe(400);
-    expect(res.text).toBe('Requisição inválida: dados obrigatórios ausentes ou formato incorreto');
+    expect(res.body.status).toBe('bad');
+  })
+
+  
+  it('Deve falhar ao tentar realizar a compra com valor ou quantidade negativo.', async() => {
+    const res = await request(app).post('/compra')
+    .send({
+    data: {
+        id: "1234567890",
+        loja_id: "0987654321",
+        valor: -3,
+        quantidade: 0
+      }
+    })
+    .set('Accept', 'application/json');
+    expect(res.statusCode).toBe(400);
+    expect(res.body.status).toBe('bad');
+
   })
 });
