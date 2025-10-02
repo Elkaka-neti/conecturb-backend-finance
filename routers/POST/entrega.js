@@ -4,6 +4,7 @@ module.exports = (req, res) => {
     queremos que o corpo da requisição seja algo como
 {
 data: {
+  'id': '123456788',
   'loja_id': '0987654321',
   'distance': 10.5,
   'horario': '2023-10-05T14:48:00.000Z',
@@ -14,7 +15,7 @@ data: {
     return res.status(400).send('Requisição inválida: corpo ausente ou formato incorreto');
    }
 
-   const {loja_id, distance, horario, valor_corrida } = req.body.data;
+   const {id, loja_id, distance, horario, valor_corrida } = req.body.data;
 
    if (!loja_id || typeof distance !== 'number' || !horario || typeof valor_corrida !== 'number') {
     return res.status(400).send('Requisição inválida: dados obrigatórios ausentes ou formato incorreto');
@@ -35,7 +36,8 @@ req.body.data.valor
 req.body.data.quantidade
 */
 
-var value = valor * quantidade;
+// Alguma logica para transformar em peso a distancia e valor da corrida
+
 console.log("Entrega para a loja " + loja_id + " com distância de " + distance.toFixed(2) + " km, no horário " + horario + " totalizando R$ " + valor_corrida.toFixed(2));
 
 //logica de bd
