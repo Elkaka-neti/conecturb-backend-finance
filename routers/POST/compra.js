@@ -17,11 +17,11 @@ data: {
    const { id, loja_id, valor, quantidade } = req.body.data;
 
    if (!id || !loja_id || typeof valor !== 'number' || typeof quantidade !== 'number') {
-    return res.status(400).send('Requisição inválida: dados obrigatórios ausentes ou formato incorreto');
+    return res.status(400).json({mensagem: 'Requisição inválida: dados obrigatórios ausentes ou formato incorreto', status: 'bad'});
    }
 
    if (valor <= 0 || quantidade <= 0) {
-    return res.status(400).send('Requisição inválida: valor e quantidade devem ser positivos');
+    return res.status(400).json({mensagem: 'Requisição inválida: valor e quantidade devem ser positivos', status: 'bad'});
    }
 
 /*
