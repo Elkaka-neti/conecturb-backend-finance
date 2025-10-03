@@ -20,7 +20,7 @@ registerRoutes(app, routerDir);
 
 
 
-app.listen(3000, () => {
+app.listen(3000, '127.0.0.1', () => {
 	console.log('Servidor rodando na porta 3000');
 });
 
