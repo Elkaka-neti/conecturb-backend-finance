@@ -11,22 +11,22 @@ data: {
   'valor_corrida': 3.50
 }
     */
-   if (!req.body || !req.body.data) {
-    return res.status(400).send('Requisição inválida: corpo ausente ou formato incorreto');
-   }
+  if (!req.body || !req.body.data) {
+   return res.status(400).json({ message: 'Requisição inválida: corpo ausente ou formato incorreto', status: 'bad' });
+  }
 
    const {id, loja_id, distance, horario, valor_corrida } = req.body.data;
 
-   if (!loja_id || typeof distance !== 'number' || !horario || typeof valor_corrida !== 'number') {
-    return res.status(400).send('Requisição inválida: dados obrigatórios ausentes ou formato incorreto');
-   }
+  if (!loja_id || typeof distance !== 'number' || !horario || typeof valor_corrida !== 'number') {
+   return res.status(400).json({ message: 'Requisição inválida: dados obrigatórios ausentes ou formato incorreto', status: 'bad' });
+  }
 
-   if (distance <= 0 || valor_corrida <= 0) {
-    return res.status(400).send('Requisição inválida: distância e valor da corrida devem ser positivos');
-   }
-   if (!loja_id || typeof distance !== 'number' || !horario || typeof valor_corrida !== 'number') {
-    return res.status(400).send('Requisição inválida: dados obrigatórios ausentes ou formato incorreto');
-   }
+  if (distance <= 0 || valor_corrida <= 0) {
+   return res.status(400).json({ message: 'Requisição inválida: distância e valor da corrida devem ser positivos', status: 'bad' });
+  }
+  if (!loja_id || typeof distance !== 'number' || !horario || typeof valor_corrida !== 'number') {
+   return res.status(400).json({ message: 'Requisição inválida: dados obrigatórios ausentes ou formato incorreto', status: 'bad' });
+  }
 
 
 /*
