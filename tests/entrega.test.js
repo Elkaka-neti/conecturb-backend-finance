@@ -34,8 +34,8 @@ it('Deve retornar com sucesso a requisição e salva-la', async() => {
    })
      .set('Accept', 'application/json');
    expect(res.statusCode).toBe(400);
-   expect(res.text).toBe('Requisição inválida: distância e valor da corrida devem ser positivos')
- });
+   expect(res.body.status).toBe('bad');
+  });
 
- 
+
   })
