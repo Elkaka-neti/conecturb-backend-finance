@@ -1,11 +1,11 @@
 const request = require('supertest');
 const app = require("../index");
 
-describe('POST /entrega', () => {
+describe('POST /entregas', () => {
 
 it('Deve retornar com sucesso a requisição e salva-la', async() => {
      const res = await request(app)
-      .post('/entrega')
+      .post('/entregas')
       .send({
     data: {
         id: 892382948,
@@ -22,7 +22,7 @@ it('Deve retornar com sucesso a requisição e salva-la', async() => {
 
   it('Deve retornar erro 400 para requisição com distancia negativa', async() => {
     const res = await request(app)
-     .post('/entrega')
+     .post('/entregas')
      .send({
    data: {
        id: 892382948,

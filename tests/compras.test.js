@@ -1,10 +1,10 @@
 const request = require('supertest');
 const app = require('../index');
 
-describe('Post /compra.', () => {
+describe('Post /compras.', () => {
   it('Deve realizar com sucesso a compra.', async () => {
     const res = await request(app)
-      .post('/compra')
+      .post('/compras')
       .send({
     data: {
         id: "1234567890",
@@ -21,7 +21,7 @@ describe('Post /compra.', () => {
 
   it('Deve falhar ao tentar realizar a compra com dados faltando.', async() => {
     const res = await request(app)
-      .post('/compra')
+      .post('/compras')
       .send({
         data: {
           valor: 150.75,
@@ -35,7 +35,7 @@ describe('Post /compra.', () => {
 
   
   it('Deve falhar ao tentar realizar a compra com valor ou quantidade negativo.', async() => {
-    const res = await request(app).post('/compra')
+    const res = await request(app).post('/compras')
     .send({
     data: {
         id: "1234567890",
