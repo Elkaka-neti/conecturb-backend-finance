@@ -1,7 +1,11 @@
 const { Queue, Worker } = require('bullmq');
 const Redis = require('ioredis');
 
-const connection = new Redis();
+const connection = new Redis({
+  maxRetriesPerRequest: null,
+  host: "127.0.0.1", 
+  port: 6379
+});
 
 const filaGlobal = new Queue('filaG', { connection });
 
