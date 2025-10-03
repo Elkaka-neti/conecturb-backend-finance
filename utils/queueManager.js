@@ -3,10 +3,10 @@ const Redis = require('ioredis');
 
 const connection = new Redis();
 
-const globalQueue = new Queue('globalQueue', { connection });
+const filaGlobal = new Queue('filaG', { connection });
 
 // Worker para processar jobs da fila
-const worker = new Worker('globalQueue', async (job) => {
+const worker = new Worker('filaG', async (job) => {
   
   if (job.name === 'entrega') {
     // TODO: Processar entrega
@@ -20,4 +20,4 @@ const worker = new Worker('globalQueue', async (job) => {
   }
 }, { connection });
 
-module.exports = globalQueue;
+module.exports = filaGlobal;
