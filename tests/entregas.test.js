@@ -1,5 +1,8 @@
+jest.mock('../utils/queueManager');
 const request = require('supertest');
 const app = require("../index");
+
+jest.mock('../utils/queueManager');
 
 describe('POST /entregas', () => {
 

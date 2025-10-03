@@ -1,5 +1,8 @@
+jest.mock('../utils/queueManager');
 const request = require('supertest');
 const app = require('../index');
+
+jest.mock('../utils/queueManager');
 
 describe('Post /compras.', () => {
   it('Deve realizar com sucesso a compra.', async () => {
@@ -14,8 +17,8 @@ describe('Post /compras.', () => {
       }
     })
       .set('Accept', 'application/json');
-    expect(res.statusCode).toBe(200);
-    expect(res.body).toEqual({ mensagem: 'Compra realizada com sucesso', status: 'ok'})
+    expect(res.statusCode).toBe(202);
+    expect(res.body).toEqual({ mensagem: 'Compra realizada com sucesso, processamento em breve', status: 'pending'})
   });
 
 
