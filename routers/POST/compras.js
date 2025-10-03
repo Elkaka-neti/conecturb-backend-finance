@@ -1,4 +1,6 @@
-module.exports = (req, res) => {
+const filaGlobal = require('../../utils/queueManager');
+
+module.exports = async(req, res) => {
 
     /*
     queremos que o corpo da requisição seja algo como
@@ -31,10 +33,10 @@ req.body.data.valor
 req.body.data.quantidade
 */
 
-var value = valor * quantidade;
-console.log("Compra do produto " + id + " na loja " + loja_id + " no valor unitário de R$ " + valor.toFixed(2) + " com quantidade " + quantidade + " totalizando R$ " + value.toFixed(2));
+//var value = valor * quantidade;
+//console.log("Compra do produto " + id + " na loja " + loja_id + " no valor unitário de R$ " + valor.toFixed(2) + " com quantidade " + quantidade + " totalizando R$ " + value.toFixed(2));
 
 //logica de bd
-
-  res.status(200).json({mensagem: 'Compra realizada com sucesso', status: 'ok'});
+  await filaGlobal.add('compra', req.body.data);
+  res.status(202).json({mensagem: 'Compra realizada com sucesso, processamento em breve', status: 'pending'});
 };

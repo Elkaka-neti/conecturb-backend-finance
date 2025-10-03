@@ -1,4 +1,5 @@
-module.exports = (req, res) => {
+const filaGlobal = require('../../utils/queueManager');
+module.exports = async(req, res) => {
 
     /*
     queremos que o corpo da requisição seja algo como
@@ -38,9 +39,9 @@ req.body.data.quantidade
 
 // Alguma logica para transformar em peso a distancia e valor da corrida
 
-console.log("Entrega para a loja " + loja_id + " com distância de " + distance.toFixed(2) + " km, no horário " + horario + " totalizando R$ " + valor_corrida.toFixed(2));
+//console.log("Entrega para a loja " + loja_id + " com distância de " + distance.toFixed(2) + " km, no horário " + horario + " totalizando R$ " + valor_corrida.toFixed(2));
 
 //logica de bd
-
+  await filaGlobal.add('entrega', req.body.data);
   res.status(200).json({mensagem: 'Entrega realizada com sucesso', status: 'ok'});
 };
