@@ -17,11 +17,11 @@ function percentChange(current, previous) {
 
 // Mock de dados de compras (simulando um banco)
 const mockCompras = [
-    { data: '2025-10-07', valor: 100 },
-    { data: '2025-10-07', valor: 200 },
+    { data: '2025-10-08', valor: 100 },
+    { data: '2025-10-08', valor: 200 },
     { data: '2025-10-06', valor: 150 },
     { data: '2025-10-05', valor: 120 },
-    { data: '2025-10-04', valor: 180 },
+    { data: '2025-10-08', valor: 180 },
     { data: '2025-10-03', valor: 90 },
     { data: '2025-10-02', valor: 110 },
     { data: '2025-10-01', valor: 130 },
@@ -62,7 +62,7 @@ module.exports = (req, res) => {
         variacao: variacao !== null ? variacao.toFixed(2) + '%' : 'N/A',
         mediaSemana: mediaSemana.toFixed(2),
         previsaoLucro: previsaoLucro.toFixed(2),
-        status: 'ok',
+        status: 'ok'
     });
 };
 
