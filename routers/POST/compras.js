@@ -9,7 +9,8 @@ data: {
   "id": "1234567890",
   loja_id: "0987654321",
   valor: 150.75,
-  quantidade: 3
+  quantidade: 3, 
+  data: "2023-10-03T14:30:00Z"
 }
     */
    if (!req.body || !req.body.data) {
@@ -31,6 +32,7 @@ req.body.data.id
 req.body.data.loja_id
 req.body.data.valor
 req.body.data.quantidade
+req.body.data.data
 */
 
 //var value = valor * quantidade;
